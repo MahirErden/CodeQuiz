@@ -14,11 +14,14 @@
   </head>
   <body>
 
-    <!-- <audio id="myAudio">
-      <source src="horse.ogg" type="audio/ogg">
-      <source src="horse.mp3" type="audio/mpeg">
+    <audio id="wrongAudio">
+      <source src="./assets/audio/incorrect.mp3" type="audio/mp3">
       Your browser does not support the audio element.
-    </audio> -->
+    </audio>
+    <audio id="correctAudio">
+      <source src="./assets/audio/success.wav" type="audio/wav">
+      Your browser does not support the audio element.
+    </audio>
 
     <div class="container p-2 bg-white rounded">
       <div class="row">
@@ -44,14 +47,13 @@
             <p class="h4" id="title">Question</p> 
             <div id="choiceButtons" class="">
                 <ul id="choices">
-                    <li id="0"><button id="choiceButton0" class="btn my-2 " onclick="checkAnswer(0)">Choice0</button></li>
-                    <li id="2"><button id="choiceButton1" class="btn my-2" onclick="checkAnswer(1)">Choice1</button></li>
-                    <li id="1"><button id="choiceButton2" class="btn my-2" onclick="checkAnswer(2)">Choice2</button></li>
-                    <li id="3"><button id="choiceButton3" class="btn my-2" onclick="checkAnswer(3)">Choice3</button></li>
+                    <li id="0"><button id="choiceButton0" class="btn btn-primary my-2" onclick="checkAnswer(0)">Choice0</button></li>
+                    <li id="2"><button id="choiceButton1" class="btn btn-primary my-2" onclick="checkAnswer(1)">Choice1</button></li>
+                    <li id="1"><button id="choiceButton2" class="btn btn-primary my-2" onclick="checkAnswer(2)">Choice2</button></li>
+                    <li id="3"><button id="choiceButton3" class="btn btn-primary my-2" onclick="checkAnswer(3)">Choice3</button></li>
                 </ul>
-                <p id="answerResult">Correct / Wrong</p>
+                <div><p id="answerResult" style="display: none">Correct / Wrong</p></div>
             </div>
-            
           </div>
         </div>
       </div>   

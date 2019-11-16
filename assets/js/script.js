@@ -7,6 +7,9 @@ const choiceButton0 = document.getElementById("choiceButton0");
 const choiceButton1= document.getElementById("choiceButton1");
 const choiceButton2 = document.getElementById("choiceButton2");
 const choiceButton3 = document.getElementById("choiceButton3");
+var wrongAudio = document.getElementById("wrongAudio");
+var correctAudio = document.getElementById("correctAudio");
+var answerResult = document.getElementById("answerResult");
 var currentQuestion = 0;
 var score = 0;
 
@@ -18,9 +21,7 @@ function startQuiz(){
     startContainer.style.display = "none";
     renderQuestion();
     questionContainer.style.display = "block";
-    timedCountdown();
-   //var lastQuestion = 
-    console.log(lastQuestion);
+    startInterval();
 }
 
 function renderQuestion(){
@@ -36,36 +37,79 @@ function checkAnswer(answerId){
     if( answerId === 0) {
         if(choiceButton0.textContent === questions[currentQuestion].answer){
             choiceButton0.style.backgroundColor = "#28a745";
-            choiceButton0.style.color = "black";
+            correctAudio.play();
+            answerResult.textContent = "Correct";
+            answerResult.style.color = "green";
+            answerResult.style.fontSize = "bolder";
             score++;
         } else {
             choiceButton0.style.backgroundColor = "#dc3545";
+            wrongAudio.play();
+            answerResult.textContent = "Wrong";
         } 
     }else if( answerId === 1) {
         if(choiceButton1.textContent === questions[currentQuestion].answer){
             choiceButton1.style.backgroundColor = "#28a745";
-            choiceButton1.style.color = "black";
+            correctAudio.play();
+            answerResult.textContent = "Correct";
             score++;
         } else {
             choiceButton1.style.backgroundColor = "#dc3545";
+            wrongAudio.play();
+            answerResult.textContent = "Wrong";
         }
     }else if( answerId === 2) {
         if(choiceButton2.textContent === questions[currentQuestion].answer){
             choiceButton2.style.backgroundColor = "#28a745";
-            choiceButton2.style.color = "black";
+            correctAudio.play();
+            answerResult.textContent = "Correct";
             score++;
         } else {
             choiceButton2.style.backgroundColor = "#dc3545";
+            wrongAudio.play();
+            answerResult.textContent = "Wrong";
         }
     }else if( answerId === 3) {
         if(choiceButton3.textContent === questions[currentQuestion].answer){            
             choiceButton3.style.backgroundColor = "#28a745";
-            choiceButton3.style.color = "black";
+            correctAudio.play();
+            answerResult.textContent = "Correct";
             score++;
         } else {
             choiceButton3.style.backgroundColor = "#dc3545";
+            wrongAudio.play();
+            answerResult.textContent = "Wrong";
         }
     }
+    answerResult.style.display = "block";
+    choiceButton0.disabled = true;
+    choiceButton1.disabled = true;
+    choiceButton2.disabled = true;
+    choiceButton3.disabled = true;
+    setTimeout(afterTimeOut, 1800);
+}
+
+//Timer section
+var countdown = 100;
+var t;
+var timer_is_on = 0;
+var counter;
+
+function afterTimeOut() {
+
+    choiceButton0.style.backgroundColor = "#007bff";
+    choiceButton1.style.backgroundColor = "#007bff";
+    choiceButton2.style.backgroundColor = "#007bff";
+    choiceButton3.style.backgroundColor = "#007bff";
+    choiceButton0.style.color = "white";
+    choiceButton1.style.color = "white";
+    choiceButton2.style.color = "white";
+    choiceButton3.style.color = "white";
+    choiceButton0.disabled = false;
+    choiceButton1.disabled = false;
+    choiceButton2.disabled = false;
+    choiceButton3.disabled = false;
+    answerResult.style.display = "none";
 
     if(currentQuestion < questions.length){
         currentQuestion++;
@@ -79,36 +123,6 @@ function checkAnswer(answerId){
         console.log(typeof(lastQuestion));
         //scoreRender();
     }
-    setInterval(timedCountdown2,2000);
-}
-
-//Timer section
-var countdown = 100;
-var t;
-var timer_is_on = 0;
-var counter;
-
-function afterTimeOut() {
-    switch (answerId) {
-        case 0:
-            choiceButton0.style.backgroundColor = "#007bff";
-          break;
-        case 1:
-            choiceButton1.style.backgroundColor = "#007bff";
-          break;
-        case 2:
-            choiceButton2.style.backgroundColor = "#007bff";
-          break;
-        case 3:
-            choiceButton3.style.backgroundColor = "#007bff";
-          break;  
-        default:
-            choiceButton0.style.backgroundColor = "#007bff";
-            choiceButton1.style.backgroundColor = "#007bff";
-            choiceButton2.style.backgroundColor = "#007bff";
-            choiceButton3.style.backgroundColor = "#007bff";
-      }
-  
 }
 
 function count() {
@@ -116,15 +130,11 @@ function count() {
   countdown--;
 }
 
-function startIntervaln() {
+function startInterval() {
   if (!timer_is_on) {
     timer_is_on = 1;
   }
   counter = setInterval(count,1000);
-}
-
-function startTimeOut() {
-    t = setTimeout(timedCountdown, 1000);
 }
 
 function stopInterval() {
@@ -132,9 +142,6 @@ function stopInterval() {
   clearInterval(counter);
 }
 
-function stopTimeOut() {
-    clearTimeout(t);
-}
 //Audio section
 
 var x = document.getElementById("myAudio"); 
