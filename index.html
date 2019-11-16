@@ -14,52 +14,54 @@
   </head>
   <body>
 
-    <div class="container">
+    <!-- <audio id="myAudio">
+      <source src="horse.ogg" type="audio/ogg">
+      <source src="horse.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio> -->
 
-
-      <button onclick="startCountdown()">Start count!</button>
-        <input type="text" id="txt" value="Time: ">
-        <p id="txtCountdown">Time: 75</p>
-      <button onclick="stopCountdown()">Stop count!</button>
-
-
+    <div class="container p-2 bg-white rounded">
+      <div class="row">
+        <div class="col md-6 d-flex justify-content-between">
+          <a class="ml-2" href="#">View Highscores</a>
+          <p class="mr-2" id="txtCountdown">Time: 100</p>
+        </div>
+      </div>
+      <div class="p-8 mt-6" id="startContainer">
+        <div class="row mt-6 pt-md-8">
+          <div class="col md-12 d-flex justify-content-center align-content-center flex-wrap">
+            <h1 class="">Coding Quiz Challenge</h1>
+            <p>Try to answer the following javascript related questions within the time limit.<br>
+              Keep in mine that incorrect answers will penalize your score/time by ten seconds!
+            </p>
+            <button type="button" id="startButton" class="btn btn-primary btn-lg">Start Quiz</button>
+          </div>
+        </div>
+      </div>     
+      <div class="mt-6" id="questionContainer" style="display: none">
+        <div class="row mt-6 pt-md-8">
+          <div class="col md-12 float-left">
+            <p class="h4" id="title">Question</p> 
+            <div id="choiceButtons" class="">
+                <ul id="choices">
+                    <li id="0"><button id="choiceButton0" class="btn my-2 " onclick="checkAnswer(0)">Choice0</button></li>
+                    <li id="2"><button id="choiceButton1" class="btn my-2" onclick="checkAnswer(1)">Choice1</button></li>
+                    <li id="1"><button id="choiceButton2" class="btn my-2" onclick="checkAnswer(2)">Choice2</button></li>
+                    <li id="3"><button id="choiceButton3" class="btn my-2" onclick="checkAnswer(3)">Choice3</button></li>
+                </ul>
+                <p id="answerResult">Correct / Wrong</p>
+            </div>
+            
+          </div>
+        </div>
+      </div>   
     </div>
    
 
 
-    <script>
-      var countdown = 75;
-      var countdown2 = 75;
-      var t;
-      var timer_is_on = 0;
-      var myVar;
-      
-      function timedCountdown() {
-        document.getElementById("txtCountdown").innerHTML = "Time: " + countdown;
-        countdown--;
-        t = setTimeout(timedCountdown, 1000);
-      }
-      function timedCountdown2() {
-        document.getElementById("txt").value = "Time: " + countdown2;
-        countdown2--;
-      }
-      
-      function startCountdown() {
-        if (!timer_is_on) {
-          timer_is_on = 1;
-          timedCountdown();
-        }
-        myVar = setInterval(timedCountdown2,1000);
-      }
-      
-      function stopCountdown() {
-        clearTimeout(t);
-        timer_is_on = 0;
-        clearInterval(myVar);
-      }
-      </script>
+    <script type="text/javascript" src="./assets/js/questions.js"></script>
     <script type="text/javascript" src="./assets/js/script.js"></script>
-
+   
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
