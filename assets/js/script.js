@@ -38,47 +38,53 @@ function checkAnswer(answerId){
         if(choiceButton0.textContent === questions[currentQuestion].answer){
             choiceButton0.style.backgroundColor = "#28a745";
             correctAudio.play();
-            answerResult.textContent = "Correct";
-            answerResult.style.color = "green";
-            answerResult.style.fontSize = "bolder";
             score++;
+            answerResult.textContent = "Correct " + score + "/" + questions.length;
+            answerResult.style.color = "green";
         } else {
             choiceButton0.style.backgroundColor = "#dc3545";
             wrongAudio.play();
-            answerResult.textContent = "Wrong";
+            answerResult.textContent = "Wrong " + score + "/" + questions.length;
+            answerResult.style.color = "red";
         } 
     }else if( answerId === 1) {
         if(choiceButton1.textContent === questions[currentQuestion].answer){
             choiceButton1.style.backgroundColor = "#28a745";
             correctAudio.play();
-            answerResult.textContent = "Correct";
             score++;
+            answerResult.textContent = "Correct " + score + "/" + questions.length;
+            answerResult.style.color = "green";
         } else {
             choiceButton1.style.backgroundColor = "#dc3545";
             wrongAudio.play();
-            answerResult.textContent = "Wrong";
+            answerResult.textContent = "Wrong " + score + "/" + questions.length;
+            answerResult.style.color = "red";
         }
     }else if( answerId === 2) {
         if(choiceButton2.textContent === questions[currentQuestion].answer){
             choiceButton2.style.backgroundColor = "#28a745";
             correctAudio.play();
-            answerResult.textContent = "Correct";
             score++;
+            answerResult.textContent = "Correct " + score + "/" + questions.length;
+            answerResult.style.color = "green";
         } else {
             choiceButton2.style.backgroundColor = "#dc3545";
             wrongAudio.play();
-            answerResult.textContent = "Wrong";
+            answerResult.textContent = "Wrong " + score + "/" + questions.length;
+            answerResult.style.color = "red";
         }
     }else if( answerId === 3) {
         if(choiceButton3.textContent === questions[currentQuestion].answer){            
             choiceButton3.style.backgroundColor = "#28a745";
             correctAudio.play();
-            answerResult.textContent = "Correct";
             score++;
+            answerResult.textContent = "Correct " + score + "/" + questions.length;
+            answerResult.style.color = "green";
         } else {
             choiceButton3.style.backgroundColor = "#dc3545";
             wrongAudio.play();
-            answerResult.textContent = "Wrong";
+            answerResult.textContent = "Wrong " + score + "/" + questions.length;
+            answerResult.style.color = "red";
         }
     }
     answerResult.style.display = "block";
@@ -90,10 +96,8 @@ function checkAnswer(answerId){
 }
 
 //Timer section
-var countdown = 100;
 var t;
-var timer_is_on = 0;
-var counter;
+var countdown = 49;
 
 function afterTimeOut() {
 
@@ -117,39 +121,41 @@ function afterTimeOut() {
         renderQuestion();
     }else{
         // end the quiz and show the score
-        console.log(currentQuestion);
-        console.log(typeof(currentQuestion));
-        console.log(lastQuestion);
-        console.log(typeof(lastQuestion));
         //scoreRender();
+        //
     }
 }
 
 function count() {
-  document.getElementById("txtCountdown").innerHTML = "Time: " + countdown;
   countdown--;
+  document.getElementById("txtCountdown").innerHTML = "Time: " + countdown;
+  if (countdown === 0){
+    stopInterval();
+    var txt;
+    if (confirm("Sorry, You have not completed the quiz on time!\nWould you like to try again")) {
+        window.location.reload();
+    } else {
+        window.close();
+    }
+  }
 }
 
 function startInterval() {
-  if (!timer_is_on) {
-    timer_is_on = 1;
-  }
   counter = setInterval(count,1000);
 }
 
 function stopInterval() {
-  timer_is_on = 0;
   clearInterval(counter);
 }
 
-//Audio section
-
-var x = document.getElementById("myAudio"); 
-
-function playAudio() { 
-  x.play(); 
-} 
-
-//This is a comment
-/*This is a 
-comment*/
+//Local Storage section
+function SortLocalStorage(){
+    if(localStorage.length > 0){
+       var localStorageArray = new Array();
+       for (i=0;i<localStorage.length;i++){
+           localStorageArray[i] = localStorage.key(i)+localStorage.getItem(localStorage.key(i));
+       }
+    }
+    var sortedArray = localStorageArray.sort();
+    return sortedArray;
+ }

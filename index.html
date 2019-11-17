@@ -27,20 +27,22 @@
       <div class="row">
         <div class="col md-6 d-flex justify-content-between">
           <a class="ml-2" href="#">View Highscores</a>
-          <p class="mr-2" id="txtCountdown">Time: 100</p>
+          <p class="mr-2" id="txtCountdown">Time: 50</p>
         </div>
       </div>
+      <!--Starter section-->
       <div class="p-8 mt-6" id="startContainer">
         <div class="row mt-6 pt-md-8">
           <div class="col md-12 d-flex justify-content-center align-content-center flex-wrap">
             <h1 class="">Coding Quiz Challenge</h1>
             <p>Try to answer the following javascript related questions within the time limit.<br>
-              Keep in mine that incorrect answers will penalize your score/time by ten seconds!
+              Keep in mine that incorrect answers will penalize your score/time by 5 seconds!
             </p>
             <button type="button" id="startButton" class="btn btn-primary btn-lg">Start Quiz</button>
           </div>
         </div>
-      </div>     
+      </div>
+      <!--Quiz section-->   
       <div class="mt-6" id="questionContainer" style="display: none">
         <div class="row mt-6 pt-md-8">
           <div class="col md-12 float-left">
@@ -52,11 +54,45 @@
                     <li id="1"><button id="choiceButton2" class="btn btn-primary my-2" onclick="checkAnswer(2)">Choice2</button></li>
                     <li id="3"><button id="choiceButton3" class="btn btn-primary my-2" onclick="checkAnswer(3)">Choice3</button></li>
                 </ul>
-                <div><p id="answerResult" style="display: none">Correct / Wrong</p></div>
             </div>
+            <p id="answerResult" style="display: none">Correct / Wrong</p>
           </div>
         </div>
-      </div>   
+      </div>
+      <!--Final Score section-->
+      <div class="" id="finalScoreContainer" style="display: none">
+        <div class="row">
+          <div class="col md-12">
+            <h1 class="">All done!</h1>
+            <h2 id="finalScore">Your final score is</h2>
+            <div class="row">
+              <div class="col md-4">
+                <p>Enter Initial: </p>
+              </div>
+              <div class="col md-4">
+                <input type="submit" value="submit">
+              </div>
+              <div class="col md-4">
+                <button type="button" id="initialSumbit" onclick="saveToLocaleStorage()" class="btn btn-primary btn-lg">Submit</button>
+              </div>   
+          </div>
+        </div>
+      </div>
+      <!--Highscore section-->
+      <div class="" id="highscoreContainer" style="display: none">
+        <div class="row">
+          <div class="col md-12">
+            <h1 class="">Highscores</h1>
+            
+            <div class="col md-6">
+                <button type="button" id="goBackButton" onclick="goBack()" class="btn btn-primary btn-lg">Go Back</button>
+              </div>
+            <div class="col md-6">
+                <button type="button" id="clearHighscoresButton" onclick="clearHighscores()" class="btn btn-primary btn-lg">Clear Highscores</button>
+            </div>  
+          </div>
+        </div>
+      </div>    
     </div>
    
 

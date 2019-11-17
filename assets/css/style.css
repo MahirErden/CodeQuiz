@@ -15,3 +15,10 @@ body{
      /* line-height: 100%;          */
  }
 
+ #answerResult{
+      font-size: large;
+      font-weight: 900;
+      background-color:cyan;
+      width: 200px;
+ }
+
