@@ -8,11 +8,10 @@ body{
 
 .container {  
      margin: auto;
-     margin-top: 3%;
+     margin-top: 5%;
      margin-bottom: 7%;
-     width: 700px;
+     width: 1200px;
      height: 500px;
-     /* line-height: 100%;          */
  }
 
  #answerResult{
