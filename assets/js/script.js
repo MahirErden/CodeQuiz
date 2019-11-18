@@ -213,7 +213,7 @@ function count() {
     if (confirm("Sorry, You have not completed the quiz on time!\nWould you like to try again")) {
         window.location.reload();
     } else {
-        window.close();
+        this.close();
     }
   }
 }
