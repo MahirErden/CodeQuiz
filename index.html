@@ -28,17 +28,17 @@
       <div class="row">
         <div class="col md-6 d-flex justify-content-between">
           <a id="viewHighscores" class="ml-2" href="#" onclick="renderHighscores()">View Highscores</a>
-          <p class="mr-2" id="txtCountdown">Time: 20</p>
+          <p class="mr-2" id="txtCountdown">Time: 150</p>
         </div>
       </div>
 
       <!--Starter section-->
-      <div class="" id="startContainer">
+      <div class="section" id="startContainer">
         <div class="row">
           <div class="col md-12 mt-20 d-flex justify-content-center align-content-center flex-wrap">
             <h1 class="">Coding Quiz Challenge</h1>
             <p>Try to answer the following javascript related questions within the time limit.<br>
-              Keep in mine that incorrect answers will penalize your score/time by 5 seconds!
+              Keep in mine that incorrect answers will penalize your score/time by 10 seconds!
             </p>
             <button type="button" id="startButton" class="btn btn-primary btn-lg">Start Quiz</button>
           </div>
@@ -46,7 +46,7 @@
       </div>
 
       <!--Quiz section-->   
-      <div class="" id="questionContainer" style="display: none">
+      <div class="section" id="questionContainer" style="display: none">
         <div class="row">
           <div class="col md-12 float-left">
             <p class="h4" id="title">Question</p> 
@@ -64,7 +64,7 @@
       </div>
 
       <!--Final Score section-->
-      <div id="finalscoreContainer" style="display: none">
+      <div class="section" id="finalscoreContainer" style="display: none">
         <div class="row">
           <div class="col md-12">
             <h1 class="">All done!</h1>
@@ -85,20 +85,24 @@
       </div>
 
       <!--Highscore section-->
-      <div id="highscoreContainer" style="display: none">
+      <div class="section" id="highscoreContainer" style="display: none">
         <div class="row">
           <div class="col md-12">
             <h1 class="">Highscores</h1>
             <ul id="highscoresUl">
             </ul>
-            <div class="row"></div>
-              <div class="col md-6">
+            <!-- <div class="row"></div>
+              <div class="col md-6 d-flex justify-content-start">
                   <button type="button" id="goBackButton" onclick="goBack()" class="btn btn-primary btn-lg">Go Back</button>
               </div>
-              <div class="col md-6">
+              <div class="col md-6 d-flex justify-content-end">
                   <button type="button" id="clearHighscoresButton" onclick="clearHighscores()" class="btn btn-primary btn-lg">Clear Highscores</button>
               </div>
-            </div>   
+            </div>    -->
+            <div>
+              <button type="button" id="goBackButton" onclick="goBack()" class="btn btn-primary btn-lg">Go Back</button>
+              <button type="button" id="clearHighscoresButton" onclick="clearHighscores()" class="btn btn-primary btn-lg ml-4">Clear Highscores</button>
+            </div>
           </div>
         </div>
       </div>

@@ -5,14 +5,19 @@ body{
      font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-
 .container {  
+     margin-top: 5%;
+     margin-bottom: 7%;
+     width: 60%;
+ }
+
+/* .container {  
      margin: auto;
      margin-top: 5%;
      margin-bottom: 7%;
-     width: 1200px;
+     width: 900px;
      height: 500px;
- }
+ } */
 
  #answerResult{
       font-size: large;
@@ -20,4 +25,25 @@ body{
       background-color:cyan;
       width: 200px;
  }
+
+ .section{
+     margin-top: 50px;
+     height: 350px;
+}
+
+#startButton{
+     margin-left: 20px;
+}
+
+#questionContainer{
+     margin-left: 50px;
+}
+
+#finalscoreContainer{
+     margin-left: 50px;
+}
+
+#highscoreContainer{
+     margin-left: 50px;
+}
 

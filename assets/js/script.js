@@ -51,52 +51,56 @@ function checkAnswer(answerId){
             choiceButton0.style.backgroundColor = "#28a745";
             correctAudio.play();
             score++;
-            answerResult.textContent = "Correct " + score + "/" + questions.length;
+            answerResult.textContent = "Correct - Your score is " + score + "/" + questions.length;
             answerResult.style.color = "green";
         } else {
             choiceButton0.style.backgroundColor = "#dc3545";
             wrongAudio.play();
-            answerResult.textContent = "Wrong " + score + "/" + questions.length;
+            answerResult.textContent = "Wrong - Your score is " + score + "/" + questions.length;
             answerResult.style.color = "red";
+            countdown = countdown - 10;
         } 
     }else if( answerId === 1) {
         if(choiceButton1.textContent === questions[currentQuestion].answer){
             choiceButton1.style.backgroundColor = "#28a745";
             correctAudio.play();
             score++;
-            answerResult.textContent = "Correct " + score + "/" + questions.length;
+            answerResult.textContent = "Correct - Your score is " + score + "/" + questions.length;
             answerResult.style.color = "green";
         } else {
             choiceButton1.style.backgroundColor = "#dc3545";
             wrongAudio.play();
-            answerResult.textContent = "Wrong " + score + "/" + questions.length;
+            answerResult.textContent = "Wrong - Your score is " + score + "/" + questions.length;
             answerResult.style.color = "red";
+            countdown = countdown - 10;
         }
     }else if( answerId === 2) {
         if(choiceButton2.textContent === questions[currentQuestion].answer){
             choiceButton2.style.backgroundColor = "#28a745";
             correctAudio.play();
             score++;
-            answerResult.textContent = "Correct " + score + "/" + questions.length;
+            answerResult.textContent = "Correct - Your score is " + score + "/" + questions.length;
             answerResult.style.color = "green";
         } else {
             choiceButton2.style.backgroundColor = "#dc3545";
             wrongAudio.play();
-            answerResult.textContent = "Wrong " + score + "/" + questions.length;
+            answerResult.textContent = "Wrong - Your score is " + score + "/" + questions.length;
             answerResult.style.color = "red";
+            countdown = countdown - 10;
         }
     }else if( answerId === 3) {
         if(choiceButton3.textContent === questions[currentQuestion].answer){            
             choiceButton3.style.backgroundColor = "#28a745";
             correctAudio.play();
             score++;
-            answerResult.textContent = "Correct " + score + "/" + questions.length;
+            answerResult.textContent = "Correct - Your score is " + score + "/" + questions.length;
             answerResult.style.color = "green";
         } else {
             choiceButton3.style.backgroundColor = "#dc3545";
             wrongAudio.play();
-            answerResult.textContent = "Wrong " + score + "/" + questions.length;
+            answerResult.textContent = "Wrong - Your score is " + score + "/" + questions.length;
             answerResult.style.color = "red";
+            countdown = countdown - 10;
         }
     }
     answerResult.style.display = "block";
@@ -109,7 +113,7 @@ function checkAnswer(answerId){
 
 //Timer section
 var t;
-var countdown = 20;
+var countdown = 150;
 
 function afterTimeOut() {
 
@@ -162,12 +166,15 @@ function displayHighscores(){
 function renderHighscores(){
     displayHighscores()
     data = JSON.parse(localStorage.getItem('hscore'));
-    data.sort(dynamicSort("-score"));
-    var j = 1;
-    data.forEach(function(item){
-         liMaker(item, j);
-         j++;
-    });
+    console.log("**** " + data);
+    if (data != null){
+        data.sort(dynamicSort("-score"));
+        var j = 1;
+        data.forEach(function(item){
+            liMaker(item, j);
+            j++;
+        });
+    }   
 }
 
 function dynamicSort(property) {
@@ -193,6 +200,8 @@ function goBack(){
 
 function clearHighscores(){
     localStorage.clear();
+    renderHighscores();
+    $('#highscoresUl').empty();
 }
 
 function count() {
@@ -204,8 +213,7 @@ function count() {
     if (confirm("Sorry, You have not completed the quiz on time!\nWould you like to try again")) {
         window.location.reload();
     } else {
-        exit();
-        //window.close();
+        window.close();
     }
   }
 }
