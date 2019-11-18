@@ -30,7 +30,7 @@ startButton.addEventListener("click", startQuiz);
 
 function startQuiz(){
     startContainer.style.display = "none";
-    viewHighscores.disabled = true;
+    viewHighscores.style.visibility= "hidden";
     renderQuestion();
     questionContainer.style.display = "block";
     startInterval();
@@ -195,7 +195,7 @@ function dynamicSort(property) {
 
 function goBack(){
     window.location.reload();
-    viewHighscores.disabled = false;
+    viewHighscores.style.visibility = "visible";
 }
 
 function clearHighscores(){
